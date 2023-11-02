@@ -1,3 +1,8 @@
+//===========================
+// Copyright (c) Tarteeb LLC
+// Powering True Leadership
+//===========================
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
