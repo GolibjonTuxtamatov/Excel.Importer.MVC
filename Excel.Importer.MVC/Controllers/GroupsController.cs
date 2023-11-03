@@ -3,6 +3,7 @@
 // Powering True Leadership
 //===========================
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Groups;
@@ -73,6 +74,14 @@ namespace Excel.Importer.MVC.Controllers
             {
                 return BadRequest(groupOrchestrationServiceException);
             }
+        }
+
+        [HttpGet]
+        public async ValueTask<ActionResult<Group>> GetGroupByIdAsync(Guid id)
+        {
+            Group group = await this.groupOrchestrationService.RetrieveGroupByIdAsync(id);
+
+            return View(group);
         }
     }
 }

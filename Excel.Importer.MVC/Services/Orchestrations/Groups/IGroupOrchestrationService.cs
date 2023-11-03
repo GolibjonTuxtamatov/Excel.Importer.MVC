@@ -14,7 +14,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Groups
     {
         ValueTask<Group> AddGroupAsync(Group group);
         IQueryable<Group> RetrieveAllGroups();
-        ValueTask<Group> RetrieveGroupById(Guid id);
+        ValueTask<Group> RetrieveGroupByIdAsync(Guid id);
         ValueTask<Group> UpdateGroupAsync(Group group);
         ValueTask<Group> DeleteGroupAsync(Group group);
     }
