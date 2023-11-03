@@ -14,6 +14,9 @@ namespace Excel.Importer.MVC.Services.Proccessings.Groups
     {
         ValueTask<Group> AddGroupAsync(Group group);
         IQueryable<Group> RetrieveAllGroups();
+        ValueTask<Group> RetrieveGroupByIdAsync(Guid id);
+        ValueTask<Group> UpdateGroupAsync(Group group);
+        ValueTask<Group> DeleteGroupAsync(Group group);
         ValueTask<Guid> EnsureExistGroupAsync(string groupName);
     }
 }
