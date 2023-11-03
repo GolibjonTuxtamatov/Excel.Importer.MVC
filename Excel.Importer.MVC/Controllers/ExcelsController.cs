@@ -15,8 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Excel.Importer.MVC.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class ExcelsController : Controller
     {
         private readonly ISpreadsheetOrchestrationService spreadsheetOrchestrationService;

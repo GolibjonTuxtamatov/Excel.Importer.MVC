@@ -14,8 +14,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Excel.Importer.MVC.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class GroupsController : Controller
     {
         private readonly IGroupOrchestrationService groupOrchestrationService;
