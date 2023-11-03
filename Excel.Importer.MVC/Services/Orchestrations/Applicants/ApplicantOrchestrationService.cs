@@ -40,7 +40,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
         public ValueTask<Applicant> ModifyApplicantAsync(Applicant applicant) =>
             this.applicantProccessingService.ModifyApplicantAsync(applicant);
 
-        public ValueTask<Applicant> RemoveApplicantAsync(Guid Id) =>
-            this.applicantProccessingService.RemoveApplicantAsync(Id);
+        public ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant) =>
+            this.applicantProccessingService.RemoveApplicantAsync(applicant);
     }
 }

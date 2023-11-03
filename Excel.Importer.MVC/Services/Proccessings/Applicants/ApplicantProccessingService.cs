@@ -37,7 +37,7 @@ namespace Excel.Importer.MVC.Services.Proccessings.Applicants
         public ValueTask<Applicant> ModifyApplicantAsync(Applicant applicant) =>
             this.applicantService.ModifyApplicantAsync(applicant);
 
-        public ValueTask<Applicant> RemoveApplicantAsync(Guid guid) =>
-            this.RetriveApplicantByIdAsync(guid);
+        public ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant) =>
+            this.applicantService.RemoveApplicantAsync(applicant);
     }
 }

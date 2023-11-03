@@ -16,6 +16,6 @@ namespace Excel.Importer.MVC.Services.Foundations.Applicants
         IQueryable<Applicant> RetrieveAllApplicant();
         ValueTask<Applicant> RetrieveApplicantByIdAsync(Guid Id);
         ValueTask<Applicant> ModifyApplicantAsync(Applicant applicant);
-        ValueTask<Applicant> RemoveApplicantAsync(Guid Id);
+        ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant);
     }
 }

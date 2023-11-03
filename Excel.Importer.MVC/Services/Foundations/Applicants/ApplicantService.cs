@@ -33,16 +33,14 @@ namespace Excel.Importer.MVC.Services.Foundations.Applicants
 
         public IQueryable<Applicant> RetrieveAllApplicant() =>
             this.storageBroker.SelectAllApplicant();
+
         public ValueTask<Applicant> RetrieveApplicantByIdAsync(Guid Id) =>
             this.storageBroker.SelectApplicantByIdAsync(Id);
+
         public ValueTask<Applicant> ModifyApplicantAsync(Applicant applicant) =>
             this.storageBroker.UpdateApplicantAsync(applicant);
 
-        public async ValueTask<Applicant> RemoveApplicantAsync(Guid guid)
-        {
-            var selectedApplicant = await this.storageBroker.SelectApplicantByIdAsync(guid);
-
-            return await this.storageBroker.DeleteApplicantAsync(selectedApplicant);
-        }
+        public ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant) =>
+              this.storageBroker.DeleteApplicantAsync(applicant);
     }
 }
