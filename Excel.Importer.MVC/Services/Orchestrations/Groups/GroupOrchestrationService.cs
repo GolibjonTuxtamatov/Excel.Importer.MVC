@@ -34,7 +34,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Groups
         public IQueryable<Group> RetrieveAllGroups() =>
             TryCatch(() => this.groupProccessingService.RetrieveAllGroups());
 
-        public ValueTask<Group> RetrieveGroupById(Guid id) =>
+        public ValueTask<Group> RetrieveGroupByIdAsync(Guid id) =>
             this.groupProccessingService.RetrieveGroupByIdAsync(id);
 
         public ValueTask<Group> UpdateGroupAsync(Group group) =>
