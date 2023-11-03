@@ -3,6 +3,7 @@
 // Powering True Leadership
 //===========================
 
+using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
 using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
@@ -50,6 +51,14 @@ namespace Excel.Importer.MVC.Controllers
             {
                 return BadRequest(applicantOrchestrationServiceException.InnerException);
             }
+        }
+
+        [HttpGet]
+        public ActionResult<IQueryable<Applicant>> GetAllApplicants()
+        {
+            IQueryable<Applicant> applicants = this.applicantOrchestrationService.RetrieveAllApplicants();
+
+            return Ok(applicants);
         }
     }
 }
