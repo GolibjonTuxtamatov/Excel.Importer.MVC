@@ -3,6 +3,7 @@
 // Powering True Leadership
 //===========================
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
@@ -59,6 +60,14 @@ namespace Excel.Importer.MVC.Controllers
             IQueryable<Applicant> applicants = this.applicantOrchestrationService.RetrieveAllApplicants();
 
             return Ok(applicants);
+        }
+
+        [HttpGet]
+        public async ValueTask<ActionResult<Applicant>> GetApplicantByIdAsync(Guid id)
+        {
+            Applicant applicant = await this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id);
+
+            return Ok(applicant);
         }
     }
 }
