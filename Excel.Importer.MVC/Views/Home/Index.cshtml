@@ -1,8 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div calss="upload">
+    <div class ="notice">
+        <h3>Notice! Your Excel file should be like this.</h3>
+        <img src="~/images/example.png" height="50px" asp-append-version />
+    </div>
+    <div class="uploadExcel">
+        <form method="post" asp-controller="Excels" asp-action="ImportExternalApplicant" enctype="multipart/form-data" class="form-inline">
+            <div>
+                <input type="file" name="formFile" id="formFile" accept=".xlsx" required>
+                <button type="submit" class="btn btn-outline-success btn-">Upload</button>
+            </div>
+        </form>
+    </div>
 </div>

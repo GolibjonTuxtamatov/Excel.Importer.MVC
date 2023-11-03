@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Excel.Importer.MVC.Models.Foundations.Applicants.Applicant>
+
+@{
+    ViewData["Title"] = "ImportExternalApplicant";
+}
+<h2>Persisted Applicants</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Group Name</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        @{
+            int i = 1;
+            foreach (var applicant in Model)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@applicant.FirstName</td>
+                    <td>@applicant.LastName</td>
+                    <td>@applicant.Email</td>
+                    <td>@applicant.PhoneNumber</td>
+                    <td>@applicant.GroupName</td>
+                </tr>
+                i += 1;
+            }
+        }
+    </tbody>
+</table>
