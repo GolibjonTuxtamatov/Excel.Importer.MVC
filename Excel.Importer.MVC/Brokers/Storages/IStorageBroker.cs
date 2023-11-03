@@ -17,7 +17,7 @@ namespace Excel.Importer.MVC.Brokers.Storages
         ValueTask<T> SelectAsync<T>(params object[] objectsId) where T : class;
 
         ValueTask<T> UpdateAsync<T>(T @object);
-        
+
         ValueTask<T> DeleteAsync<T>(T @object);
     }
 }

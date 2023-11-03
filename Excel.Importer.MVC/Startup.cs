@@ -3,10 +3,6 @@
 // Powering True Leadership
 //===========================
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Excel.Importer.MVC.Brokers.Loggings;
 using Excel.Importer.MVC.Brokers.Spreadsheets;
 using Excel.Importer.MVC.Brokers.Storages;
@@ -21,7 +17,6 @@ using Excel.Importer.MVC.Services.Proccessings.Groups;
 using Excel.Importer.MVC.Services.Proccessings.Spreadsheets;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

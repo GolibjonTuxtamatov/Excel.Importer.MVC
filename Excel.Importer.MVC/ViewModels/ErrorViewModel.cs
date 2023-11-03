@@ -1,5 +1,3 @@
-using System;
-
 namespace Excel.Importer.MVC.ViewModels
 {
     public class ErrorViewModel
