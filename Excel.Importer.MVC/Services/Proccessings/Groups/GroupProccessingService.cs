@@ -32,6 +32,15 @@ namespace Excel.Importer.MVC.Services.Proccessings.Groups
         public IQueryable<Group> RetrieveAllGroups() =>
             TryCatch(() => this.groupService.RetrieveAllGroups());
 
+        public ValueTask<Group> RetrieveGroupByIdAsync(Guid id) =>
+            this.groupService.RetrieveGroupByIdAsync(id);
+
+        public ValueTask<Group> UpdateGroupAsync(Group group) =>
+            this.groupService.UpdateGroupAsync(group);
+
+        public ValueTask<Group> DeleteGroupAsync(Group group) =>
+            this.groupService.DeleteGroupAsync(group);
+
         public async ValueTask<Guid> EnsureExistGroupAsync(string groupName)
         {
             IQueryable<Group> groups = RetrieveAllGroups();
