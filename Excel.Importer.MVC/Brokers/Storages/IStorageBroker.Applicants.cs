@@ -14,7 +14,7 @@ namespace Excel.Importer.MVC.Brokers.Storages
     {
         ValueTask<Applicant> InsertApplicantAsync(Applicant applicant);
         IQueryable<Applicant> SelectAllApplicant();
-        ValueTask<Applicant> SelectAllApplicantsByIdAsync(Guid Id);
+        ValueTask<Applicant> SelectApplicantByIdAsync(Guid Id);
         ValueTask<Applicant> UpdateApplicantAsync(Applicant applicant);
         ValueTask<Applicant> DeleteApplicantAsync(Applicant applicant);
     }
