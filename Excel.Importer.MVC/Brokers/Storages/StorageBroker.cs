@@ -20,7 +20,6 @@ namespace Excel.Importer.MVC.Brokers.Storages
             using var broker = new StorageBroker(this.configuration);
             broker.Entry(@object).State = EntityState.Added;
             await broker.SaveChangesAsync();
-
             return @object;
         }
 
