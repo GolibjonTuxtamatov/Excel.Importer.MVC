@@ -63,7 +63,7 @@ namespace Excel.Importer.MVC.Controllers
             {
                 IQueryable<Group> groups = this.groupOrchestrationService.RetrieveAllGroups();
 
-                return Ok(groups);
+                return View(groups);
             }
             catch (GroupOrchestrationDependencyException groupOrchestrationDependencyException)
             {

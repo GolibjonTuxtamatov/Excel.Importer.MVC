@@ -1,17 +1,12 @@
-﻿@model IEnumerable<Applicant>
-
+﻿@model IQueryable<Group>
 @{
-    ViewData["Title"] = "ImportExternalApplicant";
+    ViewData["Title"] = "Groups";
 }
 <h2>Persisted Applicants</h2>
 <table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">First name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone Number</th>
             <th scope="col">Group Name</th>
         </tr>
     </thead>
@@ -22,11 +17,9 @@
             {
                 <tr>
                     <th scope="row">@i</th>
-                    <td>@applicant.FirstName</td>
-                    <td>@applicant.LastName</td>
-                    <td>@applicant.Email</td>
-                    <td>@applicant.PhoneNumber</td>
                     <td>@applicant.GroupName</td>
+                    <td><button class="btn btn-outline-primary">Edit</button></td>
+                    <td><button class="btn btn-outline-danger">Delete</button></td>
                 </tr>
                 i += 1;
             }
