@@ -3,6 +3,7 @@
 // Powering True Leadership
 //===========================
 
+using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Brokers.Loggings;
 using Excel.Importer.MVC.Brokers.Storages;
@@ -28,5 +29,8 @@ namespace Excel.Importer.MVC.Services.Foundations.Applicants
 
             return await this.storageBroker.InsertApplicantAsync(applicant);
         });
+
+        public IQueryable<Applicant> RetrieveAllApplicant() =>
+            this.storageBroker.SelectAllApplicant();
     }
 }
