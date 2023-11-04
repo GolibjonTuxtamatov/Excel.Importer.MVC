@@ -1,0 +1,27 @@
+﻿@model IQueryable<Applicant>
+
+<h1>Applicants</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+        </tr>
+    </thead>
+    <tbody class="table-applicant-driver">
+        @foreach (var applicant in Model)
+        {
+            <tr>
+                <td>@applicant.FirstName</td>
+                <td>@applicant.LastName</td>
+                <td>@applicant.Email</td>
+                <td>@applicant.PhoneNumber</td>
+                <td><button class="btn btn-outline-primary">Edit</button></td>
+                <td><button class="btn btn-outline-danger">Delete</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
