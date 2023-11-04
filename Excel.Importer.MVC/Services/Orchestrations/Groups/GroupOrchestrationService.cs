@@ -45,15 +45,25 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Groups
 
         public ValueTask<Group> UpdateGroupAsync(Group group)
         {
-            StudentUpdate(group);
+            GroupUpdate(group);
 
             return this.groupProccessingService.UpdateGroupAsync(group);
         }
 
-        public ValueTask<Group> DeleteGroupAsync(Group group) =>
-            this.groupProccessingService.DeleteGroupAsync(group);
+        public ValueTask<Group> DeleteGroupAsync(Group group)
+        {
+            IQueryable<Applicant> applicants =
+                this.applicantProccessingService.RetrieveAllApplicants();
 
-        private void StudentUpdate(Group group)
+            foreach (var applicant in applicants)
+            {
+                if(applicant.GroupId == group.Id)
+                    this.applicantProccessingService.RemoveApplicantAsync(applicant);
+            }
+            return this.groupProccessingService.DeleteGroupAsync(group);
+        }
+
+        private void GroupUpdate(Group group)
         {
             IQueryable<Applicant> applicants =
                 this.applicantProccessingService.RetrieveAllApplicants();

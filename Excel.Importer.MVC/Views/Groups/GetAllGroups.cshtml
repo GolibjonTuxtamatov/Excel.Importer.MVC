@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "GetAllGroups";
 }
-<h2>Persisted Applicants</h2>
+<h2>Groups</h2>
 <table class="table">
     <thead>
         <tr>
@@ -18,13 +18,16 @@
                 <tr>
                     <th scope="row">@i</th>
                     <td>
-                        <a asp-controller="Applicants" asp-action="GetApplicantsByGroupName" asp-route-id="@group.Id" class="btn btn-outline-dark">
+                        <a asp-controller="Applicants" asp-action="GetApplicantsByGroupName" asp-route-id="@group.Id" class="btn btn-outline-dark btn-m1">
                             @group.GroupName
                         </a>
                     </td>
                     <td>
-                        <a asp-controller="Groups" asp-action="Edit" asp-route-id="@group.Id" class="btn btn-outline-primary">
+                        <a asp-controller="Groups" asp-action="Edit" asp-route-id="@group.Id" class="btn btn-outline-primary btn-m1">
                             Edit
+                        </a>
+                        <a asp-controller="Groups" asp-action="DeleteGroup" asp-route-id="@group.Id" class="btn btn-outline-danger btn-m1">
+                            Delete
                         </a>
                     </td>
                 </tr>
