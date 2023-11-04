@@ -14,8 +14,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Excel.Importer.MVC.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class GroupsController : Controller
     {
         private readonly IGroupOrchestrationService groupOrchestrationService;
@@ -80,6 +78,22 @@ namespace Excel.Importer.MVC.Controllers
         public async ValueTask<ActionResult<Group>> GetGroupByIdAsync(Guid id)
         {
             Group group = await this.groupOrchestrationService.RetrieveGroupByIdAsync(id);
+
+            return View(group);
+        }
+
+        [HttpGet]
+        public async ValueTask<ActionResult<Group>> EditGroupAsync(Guid id)
+        {
+            Group group = await this.groupOrchestrationService.RetrieveGroupByIdAsync(id);
+
+            return View(group);
+        }
+
+        [HttpPut]
+        public async ValueTask<ActionResult<Group>> UpdateGroupAsync(Group inputGroup)
+        {
+            Group group = await this.groupOrchestrationService.UpdateGroupAsync(inputGroup);
 
             return View(group);
         }

@@ -1,6 +1,6 @@
 ﻿@model IQueryable<Group>
 @{
-    ViewData["Title"] = "Groups";
+    ViewData["Title"] = "GetAllGroups";
 }
 <h2>Persisted Applicants</h2>
 <table class="table">
@@ -13,13 +13,25 @@
     <tbody class="table-group-divider">
         @{
             int i = 1;
-            foreach (var applicant in Model)
+            foreach (var group in Model)
             {
                 <tr>
                     <th scope="row">@i</th>
-                    <td>@applicant.GroupName</td>
-                    <td><button class="btn btn-outline-primary">Edit</button></td>
-                    <td><button class="btn btn-outline-danger">Delete</button></td>
+                    <td>
+                        <a asp-route-id="@group.Id" asp-controller="Applicants" asp-action="GetApplicantsByGroup">
+                            <h4 class="btn btn-outline-dark">
+                                @group.GroupName
+                            </h4>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-route-id="@group.Id" asp-controller="Groups" asp-action="EditGroupAsync" class="btn btn-outline-primary">
+                            Edit
+                        </a>
+                        <a asp-route-group="@group" asp-controller="Groups" asp-action="DeleteGroupAsync" class="btn btn-outline-danger" onclick="return DeleteInput()">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
                 i += 1;
             }
