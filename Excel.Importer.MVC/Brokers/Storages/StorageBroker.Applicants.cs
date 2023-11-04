@@ -3,6 +3,7 @@
 // Powering True Leadership
 //===========================
 
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
@@ -19,5 +20,14 @@ namespace Excel.Importer.MVC.Brokers.Storages
 
         public IQueryable<Applicant> SelectAllApplicant() =>
             SelectAll<Applicant>();
+
+        public async ValueTask<Applicant> SelectApplicantByIdAsync(Guid Id) =>
+            await SelectAsync<Applicant>(Id);
+
+        public async ValueTask<Applicant> UpdateApplicantAsync(Applicant applicant) =>
+            await UpdateAsync(applicant);
+
+        public async ValueTask<Applicant> DeleteApplicantAsync(Applicant applicant) =>
+            await DeleteAsync(applicant);
     }
 }
