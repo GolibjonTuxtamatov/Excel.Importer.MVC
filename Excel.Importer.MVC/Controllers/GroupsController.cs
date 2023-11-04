@@ -89,5 +89,16 @@ namespace Excel.Importer.MVC.Controllers
 
             return RedirectToAction("GetAllGroups");
         }
+
+        [HttpGet]
+        public IActionResult DeleteGroup(Guid id)
+        {
+            Group group =
+                this.groupOrchestrationService.RetrieveGroupByIdAsync(id).Result;
+
+            this.groupOrchestrationService.DeleteGroupAsync(group);
+
+            return RedirectToAction("GetAllGroups");
+        }
     }
 }
