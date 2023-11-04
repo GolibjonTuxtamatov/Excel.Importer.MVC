@@ -69,23 +69,21 @@ namespace Excel.Importer.MVC.Controllers
 
         public ActionResult<IQueryable<Applicant>> GetApplicantsByGroupName(Guid id)
         {
-            List<Applicant> applicants = 
+            List<Applicant> applicants =
                 this.applicantOrchestrationService.RetrieveAllApplicants().ToList();
 
             IQueryable<Applicant> applicantWithGroup =
                 applicants.Where(applicant => applicant.GroupId == id).AsQueryable();
 
             return View(applicantWithGroup);
+        }
 
+        [HttpGet]
         public async ValueTask<ActionResult<Applicant>> GetApplicantByIdAsync(Guid id)
         {
             Applicant applicant = await this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id);
 
             return Ok(applicant);
-
-
-            return View(applicant);
-
         }
     }
 }
