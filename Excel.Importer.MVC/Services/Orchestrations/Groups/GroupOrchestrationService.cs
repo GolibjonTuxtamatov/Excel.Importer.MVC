@@ -64,7 +64,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Groups
                 {
                     applicant.GroupId = group.Id;
                     applicant.GroupName = group.GroupName;
-                    this.applicantProccessingService
+                    this.applicantProccessingService.ModifyApplicantAsync(applicant);
                 }
             }
 
