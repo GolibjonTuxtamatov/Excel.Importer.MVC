@@ -59,7 +59,7 @@ namespace Excel.Importer.MVC.Controllers
         {
             IQueryable<Applicant> applicants = this.applicantOrchestrationService.RetrieveAllApplicants();
 
-            return Ok(applicants);
+            return View(applicants);
         }
 
         [HttpGet]
@@ -67,7 +67,7 @@ namespace Excel.Importer.MVC.Controllers
         {
             Applicant applicant = await this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id);
 
-            return Ok(applicant);
+            return View(applicant);
         }
     }
 }
