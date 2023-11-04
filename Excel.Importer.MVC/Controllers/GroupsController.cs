@@ -75,11 +75,19 @@ namespace Excel.Importer.MVC.Controllers
         }
 
         [HttpGet]
-        public async ValueTask<ActionResult<Group>> GetGroupByIdAsync(Guid id)
+        public async ValueTask<ActionResult<Group>> Edit(Guid id)
         {
             Group group = await this.groupOrchestrationService.RetrieveGroupByIdAsync(id);
 
             return View(group);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateGroup(Group group)
+        {
+            this.groupOrchestrationService.UpdateGroupAsync(group);
+
+            return RedirectToAction("GetAllGroups");
         }
     }
 }

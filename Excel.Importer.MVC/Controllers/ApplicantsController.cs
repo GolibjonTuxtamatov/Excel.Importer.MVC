@@ -1,9 +1,12 @@
-﻿//===========================
+//===========================
 // Copyright (c) Tarteeb LLC
 // Powering True Leadership
 //===========================
 
 using System;
+
+using System.Collections.Generic;
+
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
@@ -63,11 +66,26 @@ namespace Excel.Importer.MVC.Controllers
         }
 
         [HttpGet]
+
+        public ActionResult<IQueryable<Applicant>> GetApplicantsByGroupName(Guid id)
+        {
+            List<Applicant> applicants = 
+                this.applicantOrchestrationService.RetrieveAllApplicants().ToList();
+
+            IQueryable<Applicant> applicantWithGroup =
+                applicants.Where(applicant => applicant.GroupId == id).AsQueryable();
+
+            return View(applicantWithGroup);
+
         public async ValueTask<ActionResult<Applicant>> GetApplicantByIdAsync(Guid id)
         {
             Applicant applicant = await this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id);
 
+            return Ok(applicant);
+
+
             return View(applicant);
+
         }
     }
 }

@@ -1,0 +1,30 @@
+﻿@model Group
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Group</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="UpdateGroup">
+            <input asp-for="Id" hidden/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GroupName" class="control-label"></label>
+                <input asp-for="GroupName" class="form-control" required/>
+                <span asp-validation-for="GroupName" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-outline-success">Save</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetAllgroups" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
