@@ -18,18 +18,13 @@
                 <tr>
                     <th scope="row">@i</th>
                     <td>
-                        <a asp-route-id="@group.Id" asp-controller="Applicants" asp-action="GetApplicantsByGroup">
-                            <h4 class="btn btn-outline-dark">
-                                @group.GroupName
-                            </h4>
+                        <a asp-controller="Applicants" asp-action="GetApplicantsByGroupName" asp-route-id="@group.Id" class="btn btn-outline-dark">
+                            @group.GroupName
                         </a>
                     </td>
                     <td>
-                        <a asp-route-id="@group.Id" asp-controller="Groups" asp-action="EditGroupAsync" class="btn btn-outline-primary">
+                        <a asp-controller="Groups" asp-action="Edit" asp-route-id="@group.Id" class="btn btn-outline-primary">
                             Edit
-                        </a>
-                        <a asp-route-group="@group" asp-controller="Groups" asp-action="DeleteGroupAsync" class="btn btn-outline-danger" onclick="return DeleteInput()">
-                            Delete
                         </a>
                     </td>
                 </tr>
