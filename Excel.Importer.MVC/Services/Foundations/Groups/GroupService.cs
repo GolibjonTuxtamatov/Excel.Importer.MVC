@@ -26,6 +26,7 @@ namespace Excel.Importer.MVC.Services.Foundations.Groups
         public ValueTask<Group> AddGroupAsync(Group group) =>
             TryCatch(async () =>
             {
+                group.Id = Guid.NewGuid();
                 ValidateGroupOnAdd(group);
 
                 return await this.storageBroker.InsertGroupAsync(group);

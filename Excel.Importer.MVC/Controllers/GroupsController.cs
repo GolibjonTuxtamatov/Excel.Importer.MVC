@@ -23,14 +23,20 @@ namespace Excel.Importer.MVC.Controllers
             this.groupOrchestrationService = groupOrchestrationService;
         }
 
+        [HttpGet]
+        public IActionResult PostGroup()
+        {
+            return View("PostGroup");
+        }
+
         [HttpPost]
-        public async ValueTask<ActionResult<Group>> PostGroupAsync(Group group)
+        public async ValueTask<ActionResult<Group>> PostGroup(Group group)
         {
             try
             {
                 Group postedGroup = await this.groupOrchestrationService.AddGroupAsync(group);
 
-                return View(postedGroup);
+                return RedirectToAction("GetAllGroups");
             }
             catch (GroupOrchestrationValidationException groupOrchestrationValidationException)
             {
