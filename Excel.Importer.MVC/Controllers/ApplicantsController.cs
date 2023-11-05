@@ -25,14 +25,21 @@ namespace Excel.Importer.MVC.Controllers
             this.applicantOrchestrationService = applicantOrchestrationService;
         }
 
+        [HttpGet]
+        public IActionResult PostApplicant()
+        {
+            return View("PostApplicant");
+        }
+
         [HttpPost]
-        public async ValueTask<ActionResult<Applicant>> PostApplicantAsync(Applicant applicant)
+        public async ValueTask<ActionResult<Applicant>> PostApplicant(Applicant applicant)
         {
             try
             {
-                Applicant postedApplicant = await this.applicantOrchestrationService.AddApplicantAsync(applicant);
+                Applicant postedApplicant =
+                    await this.applicantOrchestrationService.AddApplicantAsync(applicant);
 
-                return postedApplicant;
+                return RedirectToAction("GetAllApplicants");
             }
             catch (ApplicantOrchestrationValidationException applicantOrchestrationValidationException)
             {

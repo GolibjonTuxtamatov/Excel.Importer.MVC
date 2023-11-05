@@ -20,6 +20,10 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
             {
                 return await returningApplicantFunction();
             }
+            catch(ApplicantExistGroupException applicantExistGroupException)
+            {
+                throw CreateAndLogValidationException(applicantExistGroupException);
+            }
             catch (ApplicantProccessingValidationException applicantProccessingValidationException)
             {
                 throw CreateAndLogOrchetrationValidationException(applicantProccessingValidationException);
@@ -37,6 +41,16 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
             {
                 throw CreateAndLogOrchetrationServiceException(applicantProccessingServiceException);
             }
+        }
+
+        private ApplicantOrchestrationValidationException CreateAndLogValidationException(Xeption exception)
+        {
+            var applicantOrchestrationValidationException =
+                new ApplicantOrchestrationValidationException(exception);
+
+            this.loggingBroker.LogError(applicantOrchestrationValidationException);
+
+            return applicantOrchestrationValidationException;
         }
 
         private ApplicantOrchestrationValidationException CreateAndLogOrchetrationValidationException(Xeption exception)
