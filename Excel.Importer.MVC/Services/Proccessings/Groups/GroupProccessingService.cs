@@ -26,6 +26,7 @@ namespace Excel.Importer.MVC.Services.Proccessings.Groups
         public ValueTask<Group> AddGroupAsync(Group group) =>
         TryCatch(async () =>
         {
+            group.Id = Guid.NewGuid();
             return await this.groupService.AddGroupAsync(group);
         });
 
