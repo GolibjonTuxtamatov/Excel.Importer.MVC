@@ -1,59 +1,42 @@
-﻿@model IEnumerable<Excel.Importer.MVC.Models.Foundations.Applicants.Applicant>
+﻿@model ApplicantViewModel
 
 @{
     ViewData["Title"] = "GetApplicantsByGroupName";
 }
 
-<h1>Applicants</h1>
+<h1>@Model.Applicant.GroupName Applicants</h1><br />
+<a asp-action="PostApplicant" class="btn btn-outline-primary">
+    Add Applicant
+</a>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GroupName)
-            </th>
-            <th></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Group Name</th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GroupName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+    <tbody class="table-applicant-driver">
+        @foreach (var applicant in Model.Applicants)
+        {
+            <tr>
+                <td>@applicant.FirstName</td>
+                <td>@applicant.LastName</td>
+                <td>@applicant.Email</td>
+                <td>@applicant.PhoneNumber</td>
+                <td>@applicant.GroupName</td>
+                <td>
+                    <a asp-controller="Groups" asp-action="Edit" asp-route-id="@applicant.Id" class="btn btn-outline-primary btn-m1">
+                        Edit
+                    </a>
+                    <a asp-controller="Groups" asp-action="DeleteGroup" asp-route-id="@applicant.Id" class="btn btn-outline-danger btn-m1">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
