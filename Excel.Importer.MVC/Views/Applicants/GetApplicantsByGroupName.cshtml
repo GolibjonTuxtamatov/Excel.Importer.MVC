@@ -1,10 +1,10 @@
-﻿@model ApplicantViewModel
+﻿@model List<Applicant>
 
 @{
     ViewData["Title"] = "GetApplicantsByGroupName";
 }
 
-<h1>@Model.Applicant.GroupName Applicants</h1><br />
+<h1>Applicants</h1><br />
 <a asp-action="PostApplicant" class="btn btn-outline-primary">
     Add Applicant
 </a>
@@ -20,7 +20,7 @@
         </tr>
     </thead>
     <tbody class="table-applicant-driver">
-        @foreach (var applicant in Model.Applicants)
+        @foreach (var applicant in Model)
         {
             <tr>
                 <td>@applicant.FirstName</td>

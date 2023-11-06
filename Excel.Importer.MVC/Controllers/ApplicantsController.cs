@@ -80,13 +80,9 @@ namespace Excel.Importer.MVC.Controllers
             List<Applicant> applicantWithGroup =
                 applicants.Where(applicant => applicant.GroupId == id).ToList();
 
-            var applicantViewModel = new ApplicantViewModel
-            {
-                Applicants = applicantWithGroup,
-                Applicant = applicantWithGroup[0]
-            };
+            
 
-            return View(applicantViewModel);
+            return View(applicantWithGroup);
         }
 
         [HttpGet]
