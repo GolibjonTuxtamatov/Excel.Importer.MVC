@@ -4,9 +4,7 @@
 //===========================
 
 using System;
-
 using System.Collections.Generic;
-
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
@@ -14,7 +12,6 @@ using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
 using Excel.Importer.MVC.Services.Orchestrations.Applicants;
 using Excel.Importer.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Excel.Importer.MVC.Controllers
 {
@@ -75,7 +72,6 @@ namespace Excel.Importer.MVC.Controllers
         }
 
         [HttpGet]
-
         public ActionResult<IQueryable<Applicant>> GetApplicantsByGroupName(Guid id)
         {
             List<Applicant> applicants =
@@ -105,6 +101,17 @@ namespace Excel.Importer.MVC.Controllers
         public async ValueTask<IActionResult> UpdateApplicant(Applicant applicant)
         {
             await this.applicantOrchestrationService.ModifyApplicantAsync(applicant);
+
+            return RedirectToAction("GetAllApplicants");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteApplicant(Guid id)
+        {
+            Applicant applicant = 
+                this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id).Result;
+
+            this.applicantOrchestrationService.RemoveApplicantAsync(applicant);
 
             return RedirectToAction("GetAllApplicants");
         }
