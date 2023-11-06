@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
 using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
 using Excel.Importer.MVC.Services.Orchestrations.Applicants;
+using Excel.Importer.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Excel.Importer.MVC.Controllers
@@ -79,10 +80,16 @@ namespace Excel.Importer.MVC.Controllers
             List<Applicant> applicants =
                 this.applicantOrchestrationService.RetrieveAllApplicants().ToList();
 
-            IQueryable<Applicant> applicantWithGroup =
-                applicants.Where(applicant => applicant.GroupId == id).AsQueryable();
+            List<Applicant> applicantWithGroup =
+                applicants.Where(applicant => applicant.GroupId == id).ToList();
 
-            return View(applicantWithGroup);
+            var applicantViewModel = new ApplicantViewModel
+            {
+                Applicants = applicantWithGroup,
+                Applicant = applicantWithGroup[0]
+            };
+
+            return View(applicantViewModel);
         }
 
         [HttpGet]
