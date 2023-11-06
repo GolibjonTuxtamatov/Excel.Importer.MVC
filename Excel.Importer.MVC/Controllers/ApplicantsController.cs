@@ -14,6 +14,7 @@ using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
 using Excel.Importer.MVC.Services.Orchestrations.Applicants;
 using Excel.Importer.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Excel.Importer.MVC.Controllers
 {
@@ -93,11 +94,19 @@ namespace Excel.Importer.MVC.Controllers
         }
 
         [HttpGet]
-        public async ValueTask<ActionResult<Applicant>> GetApplicantByIdAsync(Guid id)
+        public async ValueTask<IActionResult> EditApplicant(Guid id)
         {
             Applicant applicant = await this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id);
 
-            return Ok(applicant);
+            return View(applicant);
+        }
+
+        [HttpPost]
+        public async ValueTask<IActionResult> UpdateApplicant(Applicant applicant)
+        {
+            await this.applicantOrchestrationService.ModifyApplicantAsync(applicant);
+
+            return RedirectToAction("GetAllApplicants");
         }
     }
 }

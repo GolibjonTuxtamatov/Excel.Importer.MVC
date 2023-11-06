@@ -29,10 +29,10 @@
                 <td>@applicant.PhoneNumber</td>
                 <td>@applicant.GroupName</td>
                 <td>
-                    <a asp-controller="Groups" asp-action="Edit" asp-route-id="@applicant.Id" class="btn btn-outline-primary btn-m1">
+                    <a asp-controller="Applicants" asp-action="EditApplicant" asp-route-id="@applicant.Id" class="btn btn-outline-primary btn-m1">
                         Edit
                     </a>
-                    <a asp-controller="Groups" asp-action="DeleteGroup" asp-route-id="@applicant.Id" class="btn btn-outline-danger btn-m1">
+                    <a asp-controller="Applicants" asp-action="Delete" asp-route-id="@applicant.Id" class="btn btn-outline-danger btn-m1">
                         Delete
                     </a>
                 </td>
