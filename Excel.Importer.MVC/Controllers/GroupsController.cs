@@ -106,5 +106,18 @@ namespace Excel.Importer.MVC.Controllers
 
             return RedirectToAction("GetAllGroups");
         }
+
+        [HttpGet]
+        public IActionResult SearchGroup(string searchString)
+        {
+            var groups = this.groupOrchestrationService.RetrieveAllGroups().ToList();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                groups = groups.Where(a => a.GroupName.Contains(searchString) || a.GroupName.Contains(searchString)).ToList();
+            }
+
+            return View(groups);
+        }
     }
 }

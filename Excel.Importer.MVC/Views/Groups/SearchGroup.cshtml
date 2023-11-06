@@ -1,0 +1,27 @@
+﻿@model List<Group>
+
+<h2>Groups</h2>
+
+<form method="get" asp-action="SearchGroup">
+    <div class="form-group">
+        <label for="GroupName">Search:</label>
+        <input type="text" id="searchString" name="searchString" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Group Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model)
+        {
+            <tr>
+                <td>@group.GroupName</td>
+            </tr>
+        }
+    </tbody>
+</table>
