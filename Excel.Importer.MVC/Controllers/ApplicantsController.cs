@@ -12,6 +12,7 @@ using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
 using Excel.Importer.MVC.Services.Orchestrations.Applicants;
 using Excel.Importer.MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Excel.Importer.MVC.Controllers
 {
@@ -115,5 +116,20 @@ namespace Excel.Importer.MVC.Controllers
 
             return RedirectToAction("GetAllApplicants");
         }
+
+        [HttpGet]
+        public IActionResult SearchApplicant(string searchString)
+        {
+            var applicants = this.applicantOrchestrationService.RetrieveAllApplicants().ToList();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                applicants = applicants.Where(a => a.FirstName.Contains(searchString) || a.LastName.Contains(searchString)).ToList();
+            }
+
+            return View(applicants);
+        }
+
+
     }
 }
