@@ -5,12 +5,16 @@
 }
 
 <h1>Applicants</h1><br />
-<a asp-action="PostApplicant" class="btn btn-outline-primary">
-    Add Applicant
-</a>
-<a asp-controller="Applicants" asp-action="SearchApplicant" class="btn btn-outline-secondary">
-    SearchApplicant
-</a>
+<form method="get" asp-action="SearchApplicant" class="form-inline p-2">
+    <a asp-action="PostApplicant" class="btn btn-outline-primary form-inline">
+        Add Applicant
+    </a>
+
+    <div class="form-group">
+        <input type="text" id="searchString" name="searchString" class="form-control" />
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </div>
+</form>
 
 <table class="table">
     <thead>

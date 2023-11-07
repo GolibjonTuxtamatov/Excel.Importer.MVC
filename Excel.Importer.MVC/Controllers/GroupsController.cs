@@ -114,7 +114,7 @@ namespace Excel.Importer.MVC.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                groups = groups.Where(a => a.GroupName.Contains(searchString) || a.GroupName.Contains(searchString)).ToList();
+                groups = groups.Where(a => a.GroupName.ToLower() == searchString).ToList();
             }
 
             return View(groups);
