@@ -118,12 +118,17 @@ namespace Excel.Importer.MVC.Controllers
         {
             var applicants = this.applicantOrchestrationService.RetrieveAllApplicants().ToList();
 
+            List<Applicant> foundApplicants = null;
+
             if (!string.IsNullOrEmpty(searchString))
             {
-                applicants = applicants.Where(a => a.FirstName.Contains(searchString) || a.LastName.Contains(searchString)).ToList();
+                foundApplicants = applicants.Where(a =>
+                    a.FirstName.ToLower() == searchString.ToLower() ||
+                    a.LastName.ToLower() == searchString.ToLower() ||
+                    a.GroupName.ToLower() == searchString.ToLower()).ToList();
             }
 
-            return View(applicants);
+            return View(foundApplicants);
         }
 
 
