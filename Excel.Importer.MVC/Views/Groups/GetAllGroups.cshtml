@@ -3,12 +3,16 @@
     ViewData["Title"] = "GetAllGroups";
 }
 <h2>Groups</h2>
-<a asp-action="PostGroup" class="btn btn-outline-primary">
-    Add Group
-</a>
-<a asp-controller="Groups" asp-action="SearchGroup" class="btn btn-outline-secondary">
-    Search Group
-</a>
+<form method="get" asp-action="SearchGroup" class="form-inline p-2">
+    <a asp-action="PostGroup" class="btn btn-outline-primary">
+        Add Group
+    </a>
+    <div class="form-group">
+        <input type="text" id="searchString" name="searchString" class="form-control" />
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>

@@ -4,6 +4,7 @@
 //===========================
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Groups;
@@ -112,12 +113,14 @@ namespace Excel.Importer.MVC.Controllers
         {
             var groups = this.groupOrchestrationService.RetrieveAllGroups().ToList();
 
+            List<Group> foundGroup = null;
+
             if (!string.IsNullOrEmpty(searchString))
             {
-                groups = groups.Where(a => a.GroupName.ToLower() == searchString).ToList();
+                foundGroup = groups.Where(a => a.GroupName.ToLower() == searchString.ToLower()).ToList();
             }
 
-            return View(groups);
+            return View(foundGroup);
         }
     }
 }
