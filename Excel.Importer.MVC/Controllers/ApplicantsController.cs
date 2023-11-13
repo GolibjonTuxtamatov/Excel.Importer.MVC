@@ -5,11 +5,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Excel.Importer.MVC.Brokers.Storages;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
 using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
+using Excel.Importer.MVC.Models.Foundations.Groups;
 using Excel.Importer.MVC.Services.Orchestrations.Applicants;
+using Excel.Importer.MVC.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Excel.Importer.MVC.Controllers
@@ -17,10 +22,13 @@ namespace Excel.Importer.MVC.Controllers
     public class ApplicantsController : Controller
     {
         private readonly IApplicantOrchestrationService applicantOrchestrationService;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public ApplicantsController(IApplicantOrchestrationService applicantOrchestrationService)
+        public ApplicantsController(IApplicantOrchestrationService applicantOrchestrationService,
+            IWebHostEnvironment webHostEnvironment)
         {
             this.applicantOrchestrationService = applicantOrchestrationService;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -178,5 +186,20 @@ namespace Excel.Importer.MVC.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult DownloadExcel(Guid id)
+        {
+
+            string fileName = this.applicantOrchestrationService.DownloadExcel(id);
+
+            string filePath =
+                Path.Combine(webHostEnvironment.WebRootPath, "spreadsheets", fileName);
+
+            byte[] excelFile = System.IO.File.ReadAllBytes(filePath);
+
+            string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+            return File(excelFile, contentType, fileName);
+        }
     }
 }

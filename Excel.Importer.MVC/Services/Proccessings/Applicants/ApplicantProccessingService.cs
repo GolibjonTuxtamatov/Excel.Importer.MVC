@@ -39,5 +39,8 @@ namespace Excel.Importer.MVC.Services.Proccessings.Applicants
 
         public ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant) =>
             this.applicantService.RemoveApplicantAsync(applicant);
+
+        public string DownloadExcel(Guid id) =>
+            this.applicantService.DownloadExcel(id);
     }
 }

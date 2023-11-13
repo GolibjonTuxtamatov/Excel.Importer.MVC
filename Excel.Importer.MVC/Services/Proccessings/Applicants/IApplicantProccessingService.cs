@@ -17,5 +17,6 @@ namespace Excel.Importer.MVC.Services.Proccessings.Applicants
         ValueTask<Applicant> RetriveApplicantByIdAsync(Guid Id);
         ValueTask<Applicant> ModifyApplicantAsync(Applicant applicant);
         ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant);
+        string DownloadExcel(Guid id);
     }
 }
