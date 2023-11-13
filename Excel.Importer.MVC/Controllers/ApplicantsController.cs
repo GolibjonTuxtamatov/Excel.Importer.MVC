@@ -65,6 +65,33 @@ namespace Excel.Importer.MVC.Controllers
         }
 
         [HttpGet]
+        public IActionResult PostApplicantInGroup(Guid id)
+        {
+            Applicant applicant =
+                this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id).Result;
+
+            applicant.FirstName = string.Empty;
+            applicant.LastName = string.Empty;
+            applicant.Email = string.Empty;
+            applicant.PhoneNumber = string.Empty;
+
+            return View(applicant);
+        }
+
+        [HttpPost]
+        public IActionResult PostApplicantInGroup(Applicant applicant)
+        {
+            Applicant postedApplicant =
+                this.applicantOrchestrationService.AddApplicantInGroup(applicant).Result;
+
+            List<Applicant> applicants =
+                this.applicantOrchestrationService.RetrieveAllApplicants()
+                .Where(findingApplicant => findingApplicant.GroupId == applicant.GroupId).ToList();
+
+            return View("GetApplicantsByGroupName",applicants);
+        }
+
+        [HttpGet]
         public ActionResult<IQueryable<Applicant>> GetAllApplicants()
         {
             IQueryable<Applicant> applicants = this.applicantOrchestrationService.RetrieveAllApplicants();

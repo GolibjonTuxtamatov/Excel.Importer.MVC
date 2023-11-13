@@ -6,7 +6,7 @@
 
 <h1>Applicants</h1><br />
 <form method="get" asp-action="SearchApplicant" class="form-inline p-2">
-    <a asp-action="PostApplicant" class="btn btn-outline-primary form-inline">
+    <a asp-route-id="@Model.First().Id" asp-action="PostApplicantInGroup" class="btn btn-outline-primary form-inline">
         Add Applicant
     </a>
 

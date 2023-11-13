@@ -38,6 +38,12 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
             return await this.applicantProccessingService.AddApplicantAsync(applicant);
         });
 
+        public async ValueTask<Applicant> AddApplicantInGroup(Applicant applicant)
+        {
+            applicant.Id = Guid.NewGuid();
+            return await this.applicantProccessingService.AddApplicantAsync(applicant);
+        }
+
         public IQueryable<Applicant> RetrieveAllApplicants() =>
             this.applicantProccessingService.RetrieveAllApplicants();
 
