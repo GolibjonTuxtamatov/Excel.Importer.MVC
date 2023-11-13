@@ -22,6 +22,14 @@
                 <td>@applicant.Email</td>
                 <td>@applicant.PhoneNumber</td>
                 <td>@applicant.GroupName</td>
+                <td>
+                    <a asp-controller="Applicants" asp-action="EditApplicant" asp-route-id="@applicant.Id" class="btn btn-outline-primary btn-m1">
+                        Edit
+                    </a>
+                    <a asp-controller="Applicants" asp-action="DeleteApplicant" asp-route-id="@applicant.Id" class="btn btn-outline-danger btn-m1">
+                        Delete
+                    </a>
+                </td>
             </tr>
         }
     </tbody>
