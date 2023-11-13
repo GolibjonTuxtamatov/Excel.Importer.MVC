@@ -13,6 +13,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
     public interface IApplicantOrchestrationService
     {
         ValueTask<Applicant> AddApplicantAsync(Applicant applicant);
+        ValueTask<Applicant> AddApplicantInGroup(Applicant applicant);
         IQueryable<Applicant> RetrieveAllApplicants();
         ValueTask<Applicant> RetrieveApplicantByIdAsync(Guid Id);
         ValueTask<Applicant> ModifyApplicantAsync(Applicant applicant);
