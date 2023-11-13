@@ -56,6 +56,9 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
         public ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant) =>
             this.applicantProccessingService.RemoveApplicantAsync(applicant);
 
+        public string DownloadExcel(Guid id) =>
+            this.applicantProccessingService.DownloadExcel(id);
+
         private Applicant AddApplicantIfGroupExist(Applicant applicant)
         {
             ValidateApplicantForGroup(applicant);

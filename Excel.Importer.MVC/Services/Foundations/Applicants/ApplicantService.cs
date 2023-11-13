@@ -42,5 +42,8 @@ namespace Excel.Importer.MVC.Services.Foundations.Applicants
 
         public ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant) =>
               this.storageBroker.DeleteApplicantAsync(applicant);
+
+        public string DownloadExcel(Guid id) =>
+            this.storageBroker.DownloadExcel(id);
     }
 }
