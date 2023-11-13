@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Excel.Importer.MVC.Brokers.Loggings;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
 using Excel.Importer.MVC.Models.Foundations.Groups;
-using Excel.Importer.MVC.Services.Orchestrations.Applicants;
 using Excel.Importer.MVC.Services.Proccessings.Applicants;
 using Excel.Importer.MVC.Services.Proccessings.Groups;
 
@@ -57,7 +56,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Groups
 
             foreach (var applicant in applicants)
             {
-                if(applicant.GroupId == group.Id)
+                if (applicant.GroupId == group.Id)
                     this.applicantProccessingService.RemoveApplicantAsync(applicant);
             }
             return this.groupProccessingService.DeleteGroupAsync(group);
@@ -70,7 +69,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Groups
 
             foreach (Applicant applicant in applicants)
             {
-                if(applicant.GroupId == group.Id)
+                if (applicant.GroupId == group.Id)
                 {
                     applicant.GroupId = group.Id;
                     applicant.GroupName = group.GroupName;
