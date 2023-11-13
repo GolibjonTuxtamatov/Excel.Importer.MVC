@@ -16,7 +16,6 @@ using Excel.Importer.MVC.Services.Orchestrations.Applicants;
 using Excel.Importer.MVC.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Excel.Importer.MVC.Controllers
 {
@@ -95,7 +94,7 @@ namespace Excel.Importer.MVC.Controllers
                 this.applicantOrchestrationService.RetrieveAllApplicants()
                 .Where(findingApplicant => findingApplicant.GroupId == applicant.GroupId).ToList();
 
-            return View("GetApplicantsByGroupName",applicants);
+            return View("GetApplicantsByGroupName", applicants);
         }
 
         [HttpGet]
@@ -115,7 +114,7 @@ namespace Excel.Importer.MVC.Controllers
             List<Applicant> applicantWithGroup =
                 applicants.Where(applicant => applicant.GroupId == id).ToList();
 
-            
+
 
             return View(applicantWithGroup);
         }
@@ -139,7 +138,7 @@ namespace Excel.Importer.MVC.Controllers
         [HttpGet]
         public IActionResult DeleteApplicant(Guid id)
         {
-            Applicant applicant = 
+            Applicant applicant =
                 this.applicantOrchestrationService.RetrieveApplicantByIdAsync(id).Result;
 
             this.applicantOrchestrationService.RemoveApplicantAsync(applicant);
@@ -157,6 +156,27 @@ namespace Excel.Importer.MVC.Controllers
             if (!string.IsNullOrEmpty(searchString))
             {
                 foundApplicants = applicants.Where(a =>
+                    a.FirstName.ToLower() == searchString.ToLower() ||
+                    a.LastName.ToLower() == searchString.ToLower() ||
+                    a.GroupName.ToLower() == searchString.ToLower()).ToList();
+            }
+
+            return View(foundApplicants);
+        }
+
+        [HttpGet]
+        public IActionResult SearchApplicantInGroup(string searchString, Guid id)
+        {
+            var applicants = this.applicantOrchestrationService.RetrieveAllApplicants().ToList();
+
+            List<Applicant> applicantWithGroup =
+                applicants.Where(applicant => applicant.GroupId == id).ToList();
+
+            List<Applicant> foundApplicants = null;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                foundApplicants = applicantWithGroup.Where(a =>
                     a.FirstName.ToLower() == searchString.ToLower() ||
                     a.LastName.ToLower() == searchString.ToLower() ||
                     a.GroupName.ToLower() == searchString.ToLower()).ToList();

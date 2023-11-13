@@ -7,10 +7,10 @@ using Xeptions;
 
 namespace Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions
 {
-    public class ApplicantExistGroupException :Xeption
+    public class ApplicantExistGroupException : Xeption
     {
         public ApplicantExistGroupException()
-            :base("Group is not found")
-        {}
+            : base("Group is not found")
+        { }
     }
 }

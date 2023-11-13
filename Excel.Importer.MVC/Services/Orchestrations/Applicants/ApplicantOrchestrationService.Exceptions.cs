@@ -20,7 +20,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
             {
                 return await returningApplicantFunction();
             }
-            catch(ApplicantExistGroupException applicantExistGroupException)
+            catch (ApplicantExistGroupException applicantExistGroupException)
             {
                 throw CreateAndLogValidationException(applicantExistGroupException);
             }

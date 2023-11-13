@@ -68,7 +68,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
 
             foreach (Group group in groups)
             {
-                if(group.GroupName == applicant.GroupName)
+                if (group.GroupName == applicant.GroupName)
                 {
                     applicant.GroupId = group.Id;
                     applicant.GroupName = group.GroupName;
@@ -85,7 +85,7 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
             IQueryable<Group> groups =
                this.groupOrchestrationService.RetrieveAllGroups();
 
-            if(!groups.Contains(groups.FirstOrDefault(group => group.GroupName == applicant.GroupName)))
+            if (!groups.Contains(groups.FirstOrDefault(group => group.GroupName == applicant.GroupName)))
             {
                 throw new ApplicantExistGroupException();
             }

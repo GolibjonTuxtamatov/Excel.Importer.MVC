@@ -1,21 +1,6 @@
 ﻿@model List<Applicant>
 
-@{
-    ViewData["Title"] = "GetApplicantsByGroupName";
-}
-
-<h1>Applicants</h1><br />
-<form method="get" asp-action="SearchApplicantInGroup" class="form-inline p-2">
-    <a asp-route-id="@Model.First().Id" asp-action="PostApplicantInGroup" class="btn btn-outline-primary form-inline">
-        Add Applicant
-    </a>
-
-    <div class="form-group">
-        <input type="text" id="searchString" name="searchString" class="form-control" />
-        <input hidden id="id" name="id" value="@Model.First().GroupId" class="form-control" />
-        <button type="submit" class="btn btn-outline-primary">Search</button>
-    </div>
-</form>
+<h2>Applicants</h2>
 
 <table class="table">
     <thead>
@@ -25,9 +10,10 @@
             <th>Email</th>
             <th>Phone Number</th>
             <th>Group Name</th>
+
         </tr>
     </thead>
-    <tbody class="table-applicant-driver">
+    <tbody>
         @foreach (var applicant in Model)
         {
             <tr>
@@ -48,7 +34,3 @@
         }
     </tbody>
 </table>
-
-<a asp-controller="Applicants" asp-action="DownloadExcel" asp-route-id="@Model.First().GroupId" class="btn btn-outline-success btn-m1">
-    Download
-</a>

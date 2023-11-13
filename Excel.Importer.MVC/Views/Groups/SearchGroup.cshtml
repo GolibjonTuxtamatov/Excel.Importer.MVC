@@ -2,26 +2,36 @@
 
 <h2>Groups</h2>
 
-<form method="get" asp-action="SearchGroup">
-    <div class="form-group">
-        <label for="GroupName">Search:</label>
-        <input type="text" id="searchString" name="searchString" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
-
 <table class="table">
     <thead>
         <tr>
+            <th scope="col">#</th>
             <th>Group Name</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var group in Model)
-        {
-            <tr>
-                <td>@group.GroupName</td>
-            </tr>
-        }
+        @{
+            int i = 1;
+            foreach (var group in Model)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>
+                        <a asp-controller="Applicants" asp-action="GetApplicantsByGroupName" asp-route-id="@group.Id" class="btn btn-outline-dark btn-m1">
+                            @group.GroupName
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Groups" asp-action="Edit" asp-route-id="@group.Id" class="btn btn-outline-primary btn-m1">
+                            Edit
+                        </a>
+                        <a asp-controller="Groups" asp-action="DeleteGroup" asp-route-id="@group.Id" class="btn btn-outline-danger btn-m1">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                i += 1;
+            }
+            }
     </tbody>
 </table>
