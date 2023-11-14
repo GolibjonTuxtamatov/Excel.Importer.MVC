@@ -18,6 +18,12 @@ a.navbar-brand {
     border-color: #1861ac;
 }
 
+.navbar .nav-item :hover{
+    background-color: #aff39b;
+    border-radius: 10px;
+    font-size:15px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -102,4 +108,18 @@ body {
 
 .box{
     margin-right:100px;
+}
+
+.groupButton a {
+    color:black;
+    font-size:19px;
+}
+
+.groupButton {
+    border-radius:10px;
+    padding:0.5rem;
+}
+
+.groupButton:hover {
+    background-color: #daeec5;
 }
