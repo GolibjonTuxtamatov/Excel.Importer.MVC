@@ -5,6 +5,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th scope="col">#</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
@@ -14,15 +15,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var applicant in Model)
-        {
-            <tr>
-                <td>@applicant.FirstName</td>
-                <td>@applicant.LastName</td>
-                <td>@applicant.Email</td>
-                <td>@applicant.PhoneNumber</td>
-                <td>@applicant.GroupName</td>
-            </tr>
+        @{
+            int i = 1;
+            foreach (var applicant in Model)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@applicant.FirstName</td>
+                    <td>@applicant.LastName</td>
+                    <td>@applicant.Email</td>
+                    <td>@applicant.PhoneNumber</td>
+                    <td>@applicant.GroupName</td>
+                </tr>
+                i += 1;
+            }
         }
     </tbody>
 </table>
