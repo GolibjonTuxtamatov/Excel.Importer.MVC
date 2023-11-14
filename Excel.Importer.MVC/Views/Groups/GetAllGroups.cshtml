@@ -30,9 +30,11 @@
                 <tr>
                     <th scope="row">@i</th>
                     <td>
-                        <a asp-controller="Applicants" asp-action="GetApplicantsByGroupName" asp-route-id="@group.Id" class="btn btn-outline-dark btn-m1">
-                            @group.GroupName
-                        </a>
+                        <div class="groupButton">
+                            <a asp-controller="Applicants" asp-action="GetApplicantsByGroupName" asp-route-id="@group.Id" class="btn btn-link btn-m1">
+                                @group.GroupName
+                            </a>
+                        </div>
                     </td>
                     <td>
                         <a asp-controller="Groups" asp-action="Edit" asp-route-id="@group.Id" class="btn btn-outline-primary btn-m1">
