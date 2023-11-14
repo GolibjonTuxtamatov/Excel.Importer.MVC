@@ -4,9 +4,11 @@
 //===========================
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
 {
@@ -19,5 +21,6 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
         ValueTask<Applicant> ModifyApplicantAsync(Applicant applicant);
         ValueTask<Applicant> RemoveApplicantAsync(Applicant applicant);
         string DownloadExcel(Guid id);
+        List<SelectListItem> GetGroupAsSelectListItem();
     }
 }

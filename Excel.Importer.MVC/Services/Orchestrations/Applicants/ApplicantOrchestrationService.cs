@@ -4,6 +4,7 @@
 //===========================
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Excel.Importer.MVC.Brokers.Loggings;
@@ -12,6 +13,7 @@ using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
 using Excel.Importer.MVC.Models.Foundations.Groups;
 using Excel.Importer.MVC.Services.Orchestrations.Groups;
 using Excel.Importer.MVC.Services.Proccessings.Applicants;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
 {
@@ -58,6 +60,16 @@ namespace Excel.Importer.MVC.Services.Orchestrations.Applicants
 
         public string DownloadExcel(Guid id) =>
             this.applicantProccessingService.DownloadExcel(id);
+
+        public List<SelectListItem> GetGroupAsSelectListItem()
+        {
+            var groups = this.groupOrchestrationService.RetrieveAllGroups();
+
+            return groups.Select(g => new SelectListItem
+            {
+                Text = g.GroupName
+            }).ToList();
+        }
 
         private Applicant AddApplicantIfGroupExist(Applicant applicant)
         {
