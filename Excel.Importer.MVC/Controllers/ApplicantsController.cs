@@ -16,6 +16,7 @@ using Excel.Importer.MVC.Services.Orchestrations.Applicants;
 using Excel.Importer.MVC.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Excel.Importer.MVC.Controllers
 {
@@ -34,6 +35,9 @@ namespace Excel.Importer.MVC.Controllers
         [HttpGet]
         public IActionResult PostApplicant()
         {
+            ViewBag.list =
+                this.applicantOrchestrationService.GetGroupAsSelectListItem();
+
             return View("PostApplicant");
         }
 
@@ -114,7 +118,10 @@ namespace Excel.Importer.MVC.Controllers
             List<Applicant> applicantWithGroup =
                 applicants.Where(applicant => applicant.GroupId == id).ToList();
 
-
+            if(applicantWithGroup.Count <= 0)
+            {
+                return RedirectToAction("PostApplicant");
+            }
 
             return View(applicantWithGroup);
         }
