@@ -8,15 +8,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Excel.Importer.MVC.Brokers.Storages;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
 using Excel.Importer.MVC.Models.Foundations.Applicants.Exceptions;
-using Excel.Importer.MVC.Models.Foundations.Groups;
 using Excel.Importer.MVC.Services.Orchestrations.Applicants;
-using Excel.Importer.MVC.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Excel.Importer.MVC.Controllers
 {
@@ -118,7 +114,7 @@ namespace Excel.Importer.MVC.Controllers
             List<Applicant> applicantWithGroup =
                 applicants.Where(applicant => applicant.GroupId == id).ToList();
 
-            if(applicantWithGroup.Count <= 0)
+            if (applicantWithGroup.Count <= 0)
             {
                 return RedirectToAction("PostApplicant");
             }
