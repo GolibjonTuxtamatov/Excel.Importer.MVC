@@ -6,17 +6,14 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Excel.Importer.MVC.Models.Foundations.Applicants;
-using Excel.Importer.MVC.Models.Foundations.Groups;
-using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 
 namespace Excel.Importer.MVC.Brokers.Storages
 {
     public partial class StorageBroker
     {
-        
+
         public string DownloadExcel(Guid id)
         {
             using var broker = new StorageBroker(this.configuration, webHostEnvironment);
@@ -51,12 +48,12 @@ namespace Excel.Importer.MVC.Brokers.Storages
 
                 string rootPath = webHostEnvironment.WebRootPath;
 
-                string filePath = Path.Combine(rootPath, "spreadsheets", fileName+".xlsx");
+                string filePath = Path.Combine(rootPath, "spreadsheets", fileName + ".xlsx");
 
                 package.SaveAs(new FileInfo(filePath));
             }
 
-            return fileName+".xlsx";
+            return fileName + ".xlsx";
         }
     }
 }

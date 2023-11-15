@@ -26,7 +26,7 @@ namespace Excel.Importer.MVC.Brokers.Storages
 
         public async ValueTask<T> InsertAsync<T>(T @object)
         {
-            using var broker = new StorageBroker(this.configuration,webHostEnvironment);
+            using var broker = new StorageBroker(this.configuration, webHostEnvironment);
             broker.Entry(@object).State = EntityState.Added;
             await broker.SaveChangesAsync();
             return @object;
@@ -67,9 +67,8 @@ namespace Excel.Importer.MVC.Brokers.Storages
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = configuration.GetConnectionString(name: "DefaultConnection");
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlite(connectionString);
         }
-
 
         public override void Dispose() { }
     }
