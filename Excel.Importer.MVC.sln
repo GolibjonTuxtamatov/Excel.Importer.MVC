@@ -5,8 +5,6 @@ VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Excel.Importer.MVC", "Excel.Importer.MVC\Excel.Importer.MVC.csproj", "{AA9C0761-F776-442F-B7F6-CD0CFC16F29B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Excel.Importer.MVC.Infrastructura.Build", "Excel.Importer.MVC.Infrastructura.Build\Excel.Importer.MVC.Infrastructura.Build.csproj", "{401709C4-FF71-4833-8D65-8FA563911C43}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Excel.Importer.MVC.Tests.Unit", "Excel.Importer.MVC.Tests.Unit\Excel.Importer.MVC.Tests.Unit.csproj", "{6C285591-9C69-4E8A-83AB-C2E4B7F948C4}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{AA9C0761-F776-442F-B7F6-CD0CFC16F29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA9C0761-F776-442F-B7F6-CD0CFC16F29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA9C0761-F776-442F-B7F6-CD0CFC16F29B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{401709C4-FF71-4833-8D65-8FA563911C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{401709C4-FF71-4833-8D65-8FA563911C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{401709C4-FF71-4833-8D65-8FA563911C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{401709C4-FF71-4833-8D65-8FA563911C43}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C285591-9C69-4E8A-83AB-C2E4B7F948C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C285591-9C69-4E8A-83AB-C2E4B7F948C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C285591-9C69-4E8A-83AB-C2E4B7F948C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
