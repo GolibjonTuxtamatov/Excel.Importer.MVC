@@ -18,8 +18,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\spreadsheets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Tarteeb.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
