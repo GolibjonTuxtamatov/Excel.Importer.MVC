@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'excelimporter'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CA231F7E86524AE29710FD1A961C4F84 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DAAF27E1DE814E269F652A85677707C2 }}
           package: .
