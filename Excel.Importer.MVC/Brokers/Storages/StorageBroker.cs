@@ -66,7 +66,7 @@ namespace Excel.Importer.MVC.Brokers.Storages
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = configuration.GetConnectionString(name: "DefaultConnection");
+            string connectionString = "Data Source = ./Data/Tarteeb.db";
             optionsBuilder.UseSqlite(connectionString);
         }
 
