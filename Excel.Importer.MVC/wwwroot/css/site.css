@@ -123,3 +123,8 @@ body {
 .groupButton:hover {
     background-color: #daeec5;
 }
+
+.noteImg{
+    height:100%;
+    width:100%;
+}
