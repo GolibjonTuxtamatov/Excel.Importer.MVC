@@ -128,3 +128,8 @@ body {
     height:100%;
     width:100%;
 }
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
