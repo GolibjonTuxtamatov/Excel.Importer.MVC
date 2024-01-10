@@ -159,9 +159,9 @@ namespace Excel.Importer.MVC.Controllers
             if (!string.IsNullOrEmpty(searchString))
             {
                 foundApplicants = applicants.Where(a =>
-                    a.FirstName.ToLower() == searchString.ToLower() ||
-                    a.LastName.ToLower() == searchString.ToLower() ||
-                    a.GroupName.ToLower() == searchString.ToLower()).ToList();
+                    a.FirstName.ToLower().StartsWith(searchString.ToLower()) ||
+                    a.LastName.ToLower().StartsWith(searchString.ToLower())||
+                    a.GroupName.ToLower().StartsWith(searchString.ToLower())).ToList();
             }
 
             return View(foundApplicants);
